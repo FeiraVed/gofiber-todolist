@@ -10,6 +10,7 @@
 git clone https://github.com/FeiraVed/gofiber-todolist
 cd gofiber-todolist
 go get
+go run .
 ```
 
 - ### Gofiber
