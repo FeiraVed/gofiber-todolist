@@ -1,0 +1,69 @@
+{{if .Error}}
+<div class="alert alert-danger">
+  {{.Message}} <a href="/" class="link">Back</a>
+</div>
+{{end}}
+<div class="container" style="margin-top: 70px">
+  <h1 class="text-center text-primary" style="font-family: &quot;Tektur&quot;">
+    Update Todolist
+  </h1>
+  <div class="container bg-dark rounded" style="width: 80%">
+    <form
+      class="d-flex p-2 rounded"
+      method="post"
+      action="/todolist/1/update"
+      autocomplete="off"
+      style="font-family: &quot;Anonymous Pro&quot;"
+    >
+      <input
+        class="form-control me-2"
+        type="hidden"
+        name="id"
+        value="{{.Id}}"
+      />
+      <input
+        class="form-control me-2"
+        type="text"
+        name="name"
+        value="{{.Name}}"
+        id="todoUpdate"
+        required
+      />
+      <button class="btn btn-outline-primary disabled" type="submit">
+        Save
+      </button>
+    </form>
+    <span
+      class="text-danger"
+      style="
+        position: relative;
+        top: -8px;
+        left: 8px;
+        display: none;
+        font-size: 12px;
+        font-family: &quot;Anonymous Pro&quot;;
+      "
+    ></span>
+  </div>
+</div>
+<script>
+  document.querySelector("#todoUpdate").addEventListener("keyup", () => {
+    const input = document.querySelector("#todoUpdate");
+    const re = /^[a-zA-Z0-9_ ]+$/;
+    if (input.value.trim().length < 5) {
+      input.classList.add("is-invalid");
+      document.querySelector("span").textContent = "Field too short";
+      document.querySelector("span").style.display = "inline";
+    } else if (input.value.match(re) == null) {
+      input.classList.add("is-invalid");
+      document.querySelector("button").classList.add("disabled");
+      document.querySelector("span").textContent =
+        "Field must be letters,numbers,underscore";
+      document.querySelector("span").style.display = "inline";
+    } else {
+      input.classList.remove("is-invalid");
+      document.querySelector("button").classList.remove("disabled");
+      document.querySelector("span").style.display = "none";
+    }
+  });
+</script>
