@@ -1,8 +1,16 @@
+<img align="center" src="./gofiber_todolist.png"/>
+
 # gofiber-simple-todolist
 
 > Studi kasus todolist menggunakan framework gofiber
 
 ## Instalation
+
+```
+git clone https://github.com/FeiraVed/gofiber-todolist
+cd gofiber-todolist
+go get
+```
 
 - ### Gofiber
 
@@ -61,7 +69,3 @@ migrate -database "mysql://root@tcp(127.0.0.1:3306)/gofiber_todolist" -path ./ap
 ```
 go run .
 ```
-
-## Setup di Android/Termux:
-
-./gofiber-todolist-termux.mp4
