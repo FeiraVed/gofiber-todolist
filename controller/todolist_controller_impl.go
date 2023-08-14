@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/FeiraVed/todolist/model/web"
 	"github.com/FeiraVed/todolist/service"
@@ -30,7 +31,11 @@ func (controller *TodolistControllerImpl) Create(c *fiber.Ctx) (_ error) {
 		Name: name,
 	}
 
-	controller.service.Create(ctx, request)
+	response := controller.service.Create(ctx, request)
+	go func() {
+		time.Sleep(10 * time.Minute)
+		controller.service.Delete(ctx, response.Id)
+	}()
 	return c.Redirect("/", http.StatusMovedPermanently)
 }
 
