@@ -10,5 +10,5 @@ func main() {
 	app := injector.InitializedServer()
 	err := app.Listen(":3000")
 	helper.PanicIfError(err)
-	e
+	
 }
